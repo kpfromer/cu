@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getCourses errors if term is not found 1`] = `"Could not find current term data."`;
+
+exports[`syncClassesCalendar creates calendar events based on classes 1`] = `
+Object {
+  "calendarId": "primary",
+  "requestBody": Object {
+    "description": "Course Id: courseId
+Subject: CSCI2824-666
+Credits: 55
+Instructors:
+	Kyle Pfromer - kyle@email.com",
+    "end": Object {
+      "dateTime": "2020-01-01T09:50:00.000Z",
+      "timeZone": "America/Denver",
+    },
+    "location": "engineering center",
+    "recurrence": Array [
+      "RRULE:FREQ=WEEKLY;UNTIL=20200404T000000Z;WKST=SU;BYDAY=MO,WE,FR",
+    ],
+    "start": Object {
+      "dateTime": "2020-01-01T09:00:00.000Z",
+      "timeZone": "America/Denver",
+    },
+    "summary": "The is the class name!",
+  },
+}
+`;
+
+exports[`syncClassesCalendar errors if not logged into google 1`] = `"Not logged in to google."`;

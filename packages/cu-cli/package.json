@@ -1,0 +1,77 @@
+{
+  "name": "cu-cli",
+  "version": "1.0.1",
+  "main": "lib/index.js",
+  "author": "Kyle Pfromer",
+  "license": "MIT",
+  "repository": "github:kpfromer/cu-cli",
+  "bin": {
+    "cu-cli": "lib/index.js"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
+    "test": "jest --coverage",
+    "test:cov": "jest --coverage && coveralls < coverage/lcov.info",
+    "prepare": "yarn build",
+    "commit": "git cz",
+    "semantic-release": "semantic-release"
+  },
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "conf": "^6.2.4",
+    "cu-api": "^2.0.8",
+    "google-auth-library": "^6.0.0",
+    "googleapis": "^50.0.0",
+    "inquirer": "^7.1.0",
+    "keytar": "^5.6.0",
+    "moment": "^2.25.3",
+    "uuid": "^8.0.0",
+    "yargs": "^15.3.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
+    "@semantic-release/changelog": "5.0.1",
+    "@semantic-release/commit-analyzer": "8.0.1",
+    "@semantic-release/git": "9.0.0",
+    "@semantic-release/npm": "7.0.5",
+    "@semantic-release/release-notes-generator": "9.0.1",
+    "@types/conf": "3.0.0",
+    "@types/inquirer": "6.5.0",
+    "@types/jest": "25.2.3",
+    "@types/uuid": "7.0.4",
+    "@types/yargs": "15.0.5",
+    "commitizen": "4.1.2",
+    "coveralls": "3.1.0",
+    "cz-conventional-changelog": "3.2.0",
+    "husky": "4.2.5",
+    "jest": "26.1.0",
+    "semantic-release": "17.1.1",
+    "ts-jest": "25.5.1",
+    "ts-node": "8.10.2",
+    "typescript": "3.9.7"
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/changelog",
+      "@semantic-release/git"
+    ],
+    "branch": "master"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test",
+      "pre-push": "yarn test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}
