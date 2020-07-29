@@ -21,7 +21,7 @@
     "google-auth-library": "^6.0.0",
     "googleapis": "^50.0.0",
     "inquirer": "^7.1.0",
-    "keytar": "^5.6.0",
+    "keytar": "^6.0.0",
     "moment": "^2.25.3",
     "uuid": "^8.0.0",
     "yargs": "^15.3.1"
