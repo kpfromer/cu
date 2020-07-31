@@ -42,4 +42,7 @@ jobs:
         run: yarn test
 
       - name: Publish
-        run: npx lerna publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          GH_TOKEN: ${{secrets.GH_TOKEN}}
+        run: npx lerna publish --yes

@@ -4,7 +4,7 @@
       "allowBranch": "master",
       "bump": "patch",
       "conventionalCommits": true,
-      "message": "chore(release): publish"
+      "message": "chore(release): publish [skip-ci]"
     }
   },
   "version": "independent",
