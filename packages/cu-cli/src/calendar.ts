@@ -1,6 +1,7 @@
 import { google } from 'googleapis';
 import { OAuth2Client, Credentials } from 'google-auth-library';
 import * as inquirer from 'inquirer';
+import { FilledCredentials } from './types';
 
 // If modifying these scopes, clean the config.
 const SCOPES = ['https://www.googleapis.com/auth/calendar'];
@@ -35,7 +36,7 @@ export async function authorize(
 /**
  * Gets oAuth2 details needed to access the Google Calendar API.
  */
-export async function login(): Promise<Credentials> {
+export async function login(): Promise<FilledCredentials> {
   const { client_secret, client_id, redirect_uris } = googleAuth;
   const oAuth2Client = new google.auth.OAuth2(
     client_id,
@@ -50,7 +51,7 @@ export async function login(): Promise<Credentials> {
  */
 async function getAccessToken(
   oAuth2Client: OAuth2Client
-): Promise<Credentials> {
+): Promise<FilledCredentials> {
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: 'offline',
     scope: SCOPES
@@ -60,7 +61,7 @@ async function getAccessToken(
     { type: 'input', name: 'code', message: 'Enter the code from that page:' }
   ]);
   const token = await oAuth2Client.getToken(code);
-  return token.tokens;
+  return token.tokens as FilledCredentials;
 }
 
 // /**

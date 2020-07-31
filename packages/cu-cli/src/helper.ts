@@ -1,4 +1,4 @@
-import { Day } from './types';
+import { Day, Config } from './types';
 import * as keytar from 'keytar';
 import { v4 as uuidv4 } from 'uuid';
 import Conf from 'conf';
@@ -8,7 +8,7 @@ import Conf from 'conf';
  * @param number the number to round.
  * @param place the digit to round to.
  */
-export function toPlace(number: number, place = 2) {
+export function toPlace(number: number, place = 2): number {
   return Math.round(number * Math.pow(10, place)) / Math.pow(10, place);
 }
 
@@ -42,7 +42,7 @@ export function toDays(courseDays: string): Day[] {
 /**
  * Setups the secured config, using the system's keyring.
  */
-export async function setupConfig(): Promise<Conf> {
+export async function setupConfig(): Promise<Config> {
   // create config for app
   const foundPassword = await keytar.findPassword('cu-api');
   let configPassword: string;
