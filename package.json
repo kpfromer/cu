@@ -13,6 +13,7 @@
     "eslint-plugin-prettier": "3.1.4",
     "husky": "4.2.5",
     "lerna": "3.22.1",
+    "lint-staged": "^10.2.11",
     "prettier": "2.0.5"
   },
   "workspaces": [
@@ -31,14 +32,19 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn test",
-      "pre-push": "yarn test",
+      "pre-commit": "lint-staged && yarn test",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "eslint --fix",
+      "prettier --write"
     ]
   }
 }
