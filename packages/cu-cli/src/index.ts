@@ -2,10 +2,9 @@
 import * as inquirer from 'inquirer';
 import * as yargs from 'yargs';
 import chalk from 'chalk';
-import { login, authorize } from './calendar';
+import { login } from './calendar';
 import { getGpa, getCourses, syncClassesCalendar } from './cli';
 import { toPlace, setupConfig } from './helper';
-import { google } from 'googleapis';
 
 (async function () {
   const config = await setupConfig();

@@ -1,4 +1,4 @@
-import { google, calendar_v3 } from 'googleapis';
+import { google } from 'googleapis';
 import { OAuth2Client, Credentials } from 'google-auth-library';
 import * as inquirer from 'inquirer';
 

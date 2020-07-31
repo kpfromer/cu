@@ -1,25 +1,25 @@
 import { CUSession, ICourse, ITerm } from 'cu-api';
-import * as Conf from 'conf';
 import moment from 'moment';
 import { authorize } from './calendar';
 import { google } from 'googleapis';
 import { toDays } from './helper';
 // for tests to spy on getCourses
 import * as helper from './cli';
+import { Config } from './types';
 
-function getLogin(config: Conf): { username: string; password: string } {
+function getLogin(config: Config): { username: string; password: string } {
   if (!config.has('username') || !config.has('password'))
     throw new TypeError('User is not loaded in to CU.');
   return {
-    username: config.get('username'),
-    password: config.get('password')
+    username: config.get('username')!,
+    password: config.get('password')!
   };
 }
 
 /**
  * Creates a CU session with username and password from system keyring.
  */
-async function createSession(config: Conf): Promise<CUSession> {
+async function createSession(config: Config): Promise<CUSession> {
   const { username, password } = getLogin(config);
   const session = new CUSession();
   await session.init(username, password);
@@ -30,7 +30,7 @@ async function createSession(config: Conf): Promise<CUSession> {
  * Returns the gpa as a number.
  * @param config the config for the application.
  */
-export async function getGpa(config: Conf): Promise<number> {
+export async function getGpa(config: Config): Promise<number> {
   const { username, password } = await getLogin(config);
   const session = new CUSession();
   await session.init(username, password);
@@ -39,7 +39,7 @@ export async function getGpa(config: Conf): Promise<number> {
 }
 
 export async function getCourses(
-  config: Conf,
+  config: Config,
   term: 'current' | 'next' | 'next-next' | 'previous' = 'current'
 ): Promise<ICourse[]> {
   const session = await createSession(config);
@@ -64,13 +64,13 @@ export async function getCourses(
  * Syncs classes from CU term to google calendar.
  */
 export async function syncClassesCalendar(
-  config: Conf,
+  config: Config,
   term: 'current' | 'next' | 'next-next' | 'previous' = 'current'
 ): Promise<void> {
   const courses = await helper.getCourses(config, term);
 
   if (!config.has('google')) throw new Error('Not logged in to google.');
-  const auth = await authorize(config.get('google'));
+  const auth = await authorize(config.get('google')!);
   const calendar = google.calendar({ version: 'v3', auth });
 
   for (const course of courses) {
