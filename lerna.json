@@ -1,6 +1,15 @@
 {
-  "version": "0.0.0",
+  "command": {
+    "publish": {
+      "allowBranch": "master",
+      "bump": "patch",
+      "conventionalCommits": true,
+      "message": "chore(release): publish"
+    }
+  },
+  "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "conventionalCommits": true
+  "conventionalCommits": true,
+  "ignoreChanges": ["CHANGELOG.md", "**/.spec.ts", "**/__tests__/**"]
 }

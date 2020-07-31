@@ -40,5 +40,6 @@ jobs:
 
       - name: Test
         run: yarn test
-      # - name: Deploy
-      #   run: todo
+
+      - name: Publish
+        run: npx lerna publish
