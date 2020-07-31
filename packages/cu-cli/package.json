@@ -16,25 +16,25 @@
   },
   "dependencies": {
     "chalk": "^4.0.0",
-    "conf": "^6.2.4",
+    "conf": "^7.0.0",
     "cu-api": "^2.0.8",
     "google-auth-library": "^6.0.0",
     "googleapis": "^50.0.0",
     "inquirer": "^7.1.0",
-    "keytar": "^5.6.0",
+    "keytar": "^6.0.0",
     "moment": "^2.25.3",
     "uuid": "^8.0.0",
     "yargs": "^15.3.1"
   },
   "devDependencies": {
     "@types/conf": "3.0.0",
-    "@types/inquirer": "6.5.0",
+    "@types/inquirer": "7.3.0",
     "@types/jest": "25.2.3",
-    "@types/uuid": "7.0.4",
+    "@types/uuid": "8.0.0",
     "@types/yargs": "15.0.5",
     "coveralls": "3.1.0",
     "jest": "26.1.0",
-    "ts-jest": "25.5.1",
+    "ts-jest": "26.1.4",
     "ts-node": "8.10.2",
     "typescript": "3.9.7"
   }
