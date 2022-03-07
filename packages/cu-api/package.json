@@ -37,7 +37,7 @@
     "superagent": "^5.2.2"
   },
   "devDependencies": {
-    "@types/cheerio": "0.22.21",
+    "@types/cheerio": "0.22.31",
     "@types/node": "13.13.15",
     "@types/superagent": "4.1.8",
     "ts-node": "8.10.2",
