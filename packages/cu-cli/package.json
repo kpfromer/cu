@@ -31,7 +31,7 @@
     "@types/inquirer": "7.3.0",
     "@types/jest": "25.2.3",
     "@types/uuid": "8.0.0",
-    "@types/yargs": "15.0.5",
+    "@types/yargs": "15.0.19",
     "coveralls": "3.1.0",
     "jest": "26.1.0",
     "ts-jest": "26.1.4",
